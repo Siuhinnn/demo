@@ -1,19 +1,24 @@
 import styled from "@emotion/styled";
 
-export const ExpensesContainer = styled.div``;
-
-export const TableStyle = styled.table`
-  width: 100%;
-  text-align: center;
-  & div {
-    display: flex;
-    flex-direction: row;
+export const ExpensesContainer = styled.div`
+  margin: ${(props) => props.margin};
+  .addExpensesCard {
+    padding: 30px;
     justify-content: center;
   }
-  & h3 {
-    margin: 0;
+  .addExpensesForm {
+    display: flex;
+    justify-content: space-around;
   }
-  & th {
-    cursor: pointer;
+  .expensesTable {
+    width: 100%;
+    text-align: center;
+    th {
+      cursor: pointer;
+    }
+    .dateCard {
+      width: 30%;
+      display: inline-block;
+    }
   }
 `;
