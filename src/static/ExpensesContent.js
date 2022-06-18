@@ -12,13 +12,13 @@ const DUMMY = [
   {
     id: "e1",
     title: "Breakfast",
-    amount: 94.12,
-    date: new Date(2022, 7, 14),
+    amount: 54.12,
+    date: new Date(2022, 1, 14),
   },
   {
     id: "e2",
-    title: "Bus",
-    amount: 9.4,
+    title: "Car",
+    amount: 9000.4,
     date: new Date(2022, 2, 12),
   },
   {

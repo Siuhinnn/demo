@@ -4,17 +4,12 @@ export const navbarOptions = [
     link: "/",
   },
   {
-    name: "Expense Tracker",
-    children: [
-      {
-        name: "Add Expense",
-        link: "/expenses-tracker",
-      },
-      {
-        name: "Summary",
-        link: "/expenses-summary",
-      },
-    ],
+    name: "Add Expense",
+    link: "/expenses-tracker",
+  },
+  {
+    name: "Summary",
+    link: "/expenses-summary",
   },
   {
     name: "Map Function",

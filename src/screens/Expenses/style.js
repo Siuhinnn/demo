@@ -6,9 +6,12 @@ export const ExpensesContainer = styled.div`
     padding: 30px;
     justify-content: center;
   }
-  .addExpensesForm {
-    display: flex;
+  .formGrid {
     justify-content: space-around;
+    .MuiGrid-root{
+      text-align: center;
+      align-self: center;
+    }
   }
   .expensesTable {
     width: 100%;
@@ -17,7 +20,7 @@ export const ExpensesContainer = styled.div`
       cursor: pointer;
     }
     .dateCard {
-      width: 30%;
+      padding: 0 20px;
       display: inline-block;
     }
   }

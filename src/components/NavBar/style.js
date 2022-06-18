@@ -50,7 +50,7 @@ export const NavBarStyle = styled.div`
   }
 `;
 
-export const MoblieNavBar = styled.div`
+export const MoblieNavBarStyle = styled.div`
   display: none;
 
   @media (max-width: 768px) {
@@ -62,9 +62,9 @@ export const MoblieNavBar = styled.div`
       text-decoration: none;
     }
 
-    & .barWrapper {
+    & .moblieNavBarWrapper {
       display: none;
-      z-index: 1;
+      z-index: 100;
       ${(props) =>
         props.isMoblieNavOpen &&
         `
@@ -92,6 +92,7 @@ export const MoblieNavBar = styled.div`
               background: #5f5f5f;
               padding: 0;
               left: 0;
+              z-index: 101;
             `}
         }
       }
@@ -102,7 +103,7 @@ export const MoblieNavBar = styled.div`
       flex-flow: column;
       justify-content: center;
       margin: 1rem;
-      z-index: 2;
+      z-index: 101;
       & span {
         display: flex;
         width: 29px;

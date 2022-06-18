@@ -39,10 +39,10 @@ export default function ExpensesTable() {
 
   function sortHandler(e) {
     const sortOrder =
-      e.target.id === sortField && order === "asc" ? "desc" : "asc";
-    setSortField(e.target.id);
+      e.currentTarget.id === sortField && order === "asc" ? "desc" : "asc";
+    setSortField(e.currentTarget.id);
     setOrder(sortOrder);
-    ctx.onSort(e.target.id, sortOrder);
+    ctx.onSort(e.currentTarget.id, sortOrder);
   }
 
   return (

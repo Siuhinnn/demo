@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import { navbarOptions } from "./config";
-import { NavBarStyle, MoblieNavBar } from "./style";
+import { NavBarStyle, MoblieNavBarStyle } from "./style";
 
 export default function NavBar() {
   const [isMoblieNavOpen, setMoblieNavOpen] = useState(false);
@@ -16,7 +16,7 @@ export default function NavBar() {
     setMoblieDropdown(!isMoblieDropdown);
   }
 
-  function renderNavbar() {
+  function renderNavbar(moblieDropdownHandler, moblieNavbarHandler) {
     return navbarOptions.map((option, index) => {
       if (option.children)
         return (
@@ -46,14 +46,19 @@ export default function NavBar() {
 
   return (
     <>
-      <MoblieNavBar isMoblieNavOpen={isMoblieNavOpen} isMoblieDropdown={isMoblieDropdown}>
+      <MoblieNavBarStyle
+        isMoblieNavOpen={isMoblieNavOpen}
+        isMoblieDropdown={isMoblieDropdown}
+      >
         <div onClick={moblieNavbarHandler}>
           <span></span>
           <span></span>
           <span></span>
         </div>
-        <div className="barWrapper">{renderNavbar()}</div>
-      </MoblieNavBar>
+        <div className="moblieNavBarWrapper">
+          {renderNavbar(moblieDropdownHandler, moblieNavbarHandler)}
+        </div>
+      </MoblieNavBarStyle>
       <NavBarStyle>{renderNavbar()}</NavBarStyle>
     </>
   );
