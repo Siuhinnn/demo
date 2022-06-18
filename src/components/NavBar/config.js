@@ -12,7 +12,7 @@ export const navbarOptions = [
       },
       {
         name: "Summary",
-        link: "/",
+        link: "/expenses-summary",
       },
     ],
   },
