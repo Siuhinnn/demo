@@ -11,14 +11,13 @@ const expensesSlice = createSlice({
       return state.filter((expense) => expense.id !== action.payload);
     },
     editExpense: (state, action) => {
-        const index = state.findIndex(
+      const index = state.findIndex(
         (expense) => expense.id === action.payload.editId
       );
       state[index] = action.payload.data;
       return state;
     },
     sortExpenses: (state, action) => {
-        console.log(state);
       if (action.payload.sortField === "date") {
         const sorted = state.sort((a, b) => {
           return (
