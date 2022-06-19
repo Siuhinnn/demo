@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import {
+  Button,
+  Typography,
+  Dialog,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@mui/material";
 
 import { navbarOptions } from "./config";
 import { NavBarStyle, MoblieNavBarStyle } from "./style";
@@ -7,13 +15,20 @@ import { NavBarStyle, MoblieNavBarStyle } from "./style";
 export default function NavBar() {
   const [isMoblieNavOpen, setMoblieNavOpen] = useState(false);
   const [isMoblieDropdown, setMoblieDropdown] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   function moblieNavbarHandler() {
     setMoblieNavOpen(!isMoblieNavOpen);
   }
-
   function moblieDropdownHandler() {
     setMoblieDropdown(!isMoblieDropdown);
+  }
+
+  function modalOpenHandler() {
+    setModalOpen(true);
+  }
+  function modalCloseHandler() {
+    setModalOpen(false);
   }
 
   function renderNavbar(moblieDropdownHandler, moblieNavbarHandler) {
@@ -44,6 +59,28 @@ export default function NavBar() {
     });
   }
 
+  function renderModal() {
+    return (
+      <>
+        <Button onClick={modalOpenHandler}>Contact me</Button>
+        <Dialog open={modalOpen} onClose={modalCloseHandler}>
+          <DialogTitle>
+            <Typography variant="h2">Telephone:</Typography>
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText>63737335</DialogContentText>
+          </DialogContent>
+          <DialogTitle>
+            <Typography variant="h2">Email:</Typography>
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText>hin07012@gmail.com</DialogContentText>
+          </DialogContent>
+        </Dialog>
+      </>
+    );
+  }
+
   return (
     <>
       <MoblieNavBarStyle
@@ -59,7 +96,10 @@ export default function NavBar() {
           {renderNavbar(moblieDropdownHandler, moblieNavbarHandler)}
         </div>
       </MoblieNavBarStyle>
-      <NavBarStyle>{renderNavbar()}</NavBarStyle>
+      <NavBarStyle>
+        {renderNavbar()}
+        {renderModal()}
+      </NavBarStyle>
     </>
   );
 }

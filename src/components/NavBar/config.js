@@ -15,17 +15,4 @@ export const navbarOptions = [
     name: "Map Function",
     link: "/expenses-map",
   },
-  {
-    name: "More",
-    children: [
-      {
-        name: "About",
-        link: "/About",
-      },
-      {
-        name: "Contact",
-        link: "/Contact",
-      },
-    ],
-  },
 ];

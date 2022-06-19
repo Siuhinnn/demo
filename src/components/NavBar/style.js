@@ -8,15 +8,12 @@ export const NavBarStyle = styled.div`
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   margin: 2em;
-  a {
-    text-decoration: none;
-  }
   li {
     position: relative;
     display: block;
     text-transform: uppercase;
     padding: 1rem;
-    color: #777;
+    color: #000;
     ul {
       position: absolute;
       display: none;
