@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
-import { withTheme } from "@emotion/react";
 
-export const SummaryContainer = styled(withTheme("div"))`
+export const SummaryContainer = styled.div`
   padding: 20px;
   border-radius: 12px;
 

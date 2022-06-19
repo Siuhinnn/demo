@@ -78,7 +78,7 @@ export default function ExpensesTable() {
             {data.map((expense, index) => {
               const date = (
                 <Card variant="outlined" className="dateCard">
-                  {expense.date.toLocaleString("en-US", { month: "long" })}
+                  {expense.date.toLocaleString("en-US", { month: "short" })}
                   <Typography variant="h3">
                     {expense.date.toLocaleString("en-US", { day: "2-digit" })}
                   </Typography>

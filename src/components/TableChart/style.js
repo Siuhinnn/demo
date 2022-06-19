@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
-import { withTheme } from "@emotion/react";
 
-export const ChartStyle = styled(withTheme("div"))`
+export const ChartStyle = styled.div`
   display: flex;
   justify-content: space-around;
-  padding: 1rem;
-  border-radius: 12px;
   height: 10rem;
+  @media (max-width: 426px) {
+    flex-direction: column;
+    height: 20rem;
+  }
 `;
 
 export const Bar = styled.div`
@@ -15,10 +16,15 @@ export const Bar = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 426px) {
+    flex-direction: row-reverse;
+    height: 5%;
+    width: 100%;
+  }
 
   .inner {
     display: flex;
-    flex-flow: column;
+    flex-direction: column;
     justify-content: flex-end;
     height: 100%;
     width: 100%;
@@ -34,11 +40,16 @@ export const Bar = styled.div`
     width: 100%;
     transition: all 0.3s ease-out;
     border-radius: 12px;
+    @media (max-width: 426px) {
+      height: 100%;
+      width: ${(props) => props.fillheight};
+    }
   }
 
   label {
     font-weight: bold;
     font-size: 12px;
+    width: 30px;
     text-align: center;
   }
 `;

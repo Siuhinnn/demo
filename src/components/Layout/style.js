@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
-import { withTheme } from "@emotion/react";
 
-export const LayoutContainer = styled(withTheme("div"))`
+export const LayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;

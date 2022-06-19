@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 
 export const NavBarStyle = styled.div`
   display: flex;
@@ -7,44 +8,36 @@ export const NavBarStyle = styled.div`
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   margin: 2em;
-
-  & a {
+  a {
     text-decoration: none;
   }
-
-  & li {
+  li {
     position: relative;
     display: block;
     text-transform: uppercase;
     padding: 1rem;
     color: #777;
-
-    & ul {
+    ul {
       position: absolute;
       display: none;
       flex-direction: column;
       padding: 1px;
       left: 0;
-      background: #777;
-
-      & li {
+      background: ${(props) => props.theme.palette.primary.dark};
+      li {
         color: white;
         font-weight: normal;
       }
     }
   }
-
-  & li:hover {
-    font-weight: bold;
-    background: #777;
+  li:hover {
+    background: ${(props) => props.theme.palette.primary.dark};
     color: white;
   }
-
-  & li:hover > ul {
+  li:hover > ul {
     display: flex;
     z-index: 2;
   }
-
   @media (max-width: 768px) {
     display: none;
   }
@@ -55,24 +48,22 @@ export const MoblieNavBarStyle = styled.div`
 
   @media (max-width: 768px) {
     display: flex;
-    background-color: #1e1e23;
+    background-color: ${(props) => props.theme.palette.primary.dark};
     height: 65px;
-
-    & a {
+    a {
       text-decoration: none;
     }
-
-    & .moblieNavBarWrapper {
+    .moblieNavBarWrapper {
       display: none;
       z-index: 100;
       ${(props) =>
         props.isMoblieNavOpen &&
-        `
+        css`
           display: flex;
           position: absolute;
           width: 100vw;
           height: 100vh;
-          background: #3f3f3f;
+          background: ${props.theme.palette.primary.dark};
           margin: -1px;
         `}
       & li {
@@ -85,11 +76,11 @@ export const MoblieNavBarStyle = styled.div`
           display: none;
           ${(props) =>
             props.isMoblieDropdown &&
-            `
+            css`
               display: flex;
               position: absolute;
               flex-direction: column;
-              background: #5f5f5f;
+              background: ${props.theme.palette.primary.main};
               padding: 0;
               left: 0;
               z-index: 101;
@@ -97,14 +88,13 @@ export const MoblieNavBarStyle = styled.div`
         }
       }
     }
-
-    & div {
+    div {
       display: flex;
       flex-flow: column;
       justify-content: center;
       margin: 1rem;
       z-index: 101;
-      & span {
+      span {
         display: flex;
         width: 29px;
         height: 2px;
