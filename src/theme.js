@@ -2,6 +2,11 @@ import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
   typography: {
+    h1: {
+      fontFamily: "ElMessiri",
+      fontSize: "40px",
+      fontWeight: "600",
+    },
     h2: {
       fontSize: "20px",
       fontWeight: "600",
@@ -14,6 +19,7 @@ export const theme = createTheme({
     },
     body: {
       fontSize: "1.25rem",
+      lineHeight: "40px",
     },
   },
   palette: {

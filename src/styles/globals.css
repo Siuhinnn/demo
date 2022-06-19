@@ -18,4 +18,14 @@ code {
 
 .leaflet-container {
   height: 100%;
+  z-index: 1;
+}
+
+@font-face {
+  font-family: "ElMessiri";
+  src: url("fonts/ElMessiri/ElMessiri-VariableFont.ttf");
+}
+
+a {
+  text-decoration: none;
 }
