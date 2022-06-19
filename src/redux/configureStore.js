@@ -10,14 +10,14 @@ export default configureStore({
       {
         id: "e1",
         title: "Breakfast",
-        amount: 54.12,
+        amount: 102.12,
         date: new Date(2022, 1, 14),
         latlng: { lat: 22.3113315728684, lng: 113.92444610595705 },
       },
       {
         id: "e2",
-        title: "Car",
-        amount: 9000.4,
+        title: "Watch",
+        amount: 300.4,
         date: new Date(2022, 2, 12),
         latlng: { lat: 22.391983666602798, lng: 113.98658752441408 },
       },

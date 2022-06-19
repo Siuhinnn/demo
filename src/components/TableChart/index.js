@@ -3,7 +3,10 @@ import { ChartStyle } from "./style";
 
 export default function TableChart(props) {
   const valuesArray = props.chartData.map((x) => x.value);
-  const max = Math.max(...valuesArray);
+  const sum = valuesArray.reduce(
+    (previousValue, currentValue) => previousValue + currentValue,
+    0 //initialValue
+  );
 
   return (
     <ChartStyle>
@@ -11,7 +14,7 @@ export default function TableChart(props) {
         <ChartBar
           key={data.label}
           value={data.value}
-          maxValue={max}
+          totalValue={sum}
           label={data.label}
         />
       ))}
