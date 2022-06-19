@@ -19,7 +19,7 @@ export default function Map(props) {
             key={index}
             data={{ position: [expense.latlng.lat, expense.latlng.lng] }}
             isActive={props.popupId === index}
-            message={expense.title}
+            message={expense.title + " $" + expense.amount}
           />
         ))}
       </MapContainer>
