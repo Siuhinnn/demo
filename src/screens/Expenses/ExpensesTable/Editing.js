@@ -1,6 +1,23 @@
-import { Button, TextField } from "@mui/material";
+import { useState } from "react";
+import { Button, TextField, IconButton } from "@mui/material";
 
-export default function Editing({ expense, cancelHandler, deleteHandler }) {
+import MapModal from "components/MapModal";
+
+import MapIcon from "@mui/icons-material/Map";
+
+export default function Editing({ expense, cancelHandler, deleteHandler, passLatLng }) {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handlerModalOpen = () => {
+    setModalOpen(!modalOpen);
+  };
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
+  const handleLatLng = (e) => {
+    passLatLng(e);
+  };
+
   return (
     <>
       <td>
@@ -25,6 +42,17 @@ export default function Editing({ expense, cancelHandler, deleteHandler }) {
           type="number"
           InputProps={{ inputProps: { min: 0.01, step: 0.01 } }}
           defaultValue={expense.amount}
+        />
+      </td>
+      <td>
+        <IconButton onClick={handlerModalOpen}>
+          <MapIcon />
+        </IconButton>
+        <MapModal
+          modalOpen={modalOpen}
+          handleClose={handleModalClose}
+          passLatLng={handleLatLng}
+          defaultValue={expense.latlng}
         />
       </td>
       <td width="10%">

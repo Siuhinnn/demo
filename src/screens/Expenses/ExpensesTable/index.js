@@ -17,6 +17,11 @@ export default function ExpensesTable() {
   const [editId, setEditId] = useState(null);
   const [field, setField] = useState("");
   const [order, setOrder] = useState("asc");
+  const [latlng, setLatLng] = useState(null);
+
+  const storeSelectedLatLng = (e) => {
+    setLatLng(e);
+  };
 
   function deleteHandler(e) {
     // ctx.onDelete(e.target.name);
@@ -47,6 +52,7 @@ export default function ExpensesTable() {
       title: e.target.title.value,
       amount: +e.target.amount.value,
       date: new Date(e.target.date.value),
+      latlng: latlng,
     };
     dispatch(editExpense({ editId, data }));
     // const data = {
@@ -92,6 +98,7 @@ export default function ExpensesTable() {
                       expense={expense}
                       cancelHandler={cancelHandler}
                       deleteHandler={deleteHandler}
+                      passLatLng={storeSelectedLatLng}
                     />
                   ) : (
                     <NonEditing

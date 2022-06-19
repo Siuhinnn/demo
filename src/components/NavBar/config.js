@@ -13,7 +13,7 @@ export const navbarOptions = [
   },
   {
     name: "Map Function",
-    link: "/",
+    link: "/expenses-map",
   },
   {
     name: "More",

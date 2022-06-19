@@ -11,6 +11,7 @@ export default function NonEditing({
       <td>{date}</td>
       <td>{expense.title}</td>
       <td>{expense.amount}</td>
+      <td></td>
       <td width="10%">
         <Button
           type="button"

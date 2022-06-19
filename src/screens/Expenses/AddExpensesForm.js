@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { TextField, Button, Card, Grid } from "@mui/material";
+import { TextField, Button, Card, Grid, IconButton } from "@mui/material";
 import { useDispatch } from "react-redux";
 // import { useContext } from "react";
 
 // import ExpensesContent from "static/ExpensesContent";
 import { addExpense } from "redux/expensesSlice";
+import MapModal from "components/MapModal";
 
+import MapIcon from "@mui/icons-material/Map";
 import { ExpensesContainer } from "./style";
 
 export default function AddExpensesForm() {
@@ -18,6 +21,18 @@ export default function AddExpensesForm() {
       date: "",
     },
   });
+  const [modalOpen, setModalOpen] = useState(false);
+  const [latlng, setLatLng] = useState(null);
+
+  const handlerModalOpen = () => {
+    setModalOpen(!modalOpen);
+  };
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
+  const storeSelectedLatLng = (e) => {
+    setLatLng(e);
+  };
 
   const onSubmit = (data) => {
     const { title, amount, date } = data;
@@ -27,6 +42,7 @@ export default function AddExpensesForm() {
         title: title,
         amount: +amount,
         date: new Date(date),
+        latlng: latlng,
       })
     );
     // ctx.onInputSubmit({
@@ -90,7 +106,17 @@ export default function AddExpensesForm() {
                 )}
               />
             </Grid>
-            <Grid item sm={3} xs={12}>
+            <Grid item sm={1} xs={5}>
+              <IconButton onClick={handlerModalOpen}>
+                <MapIcon />
+              </IconButton>
+            </Grid>
+            <MapModal
+              modalOpen={modalOpen}
+              handleClose={handleModalClose}
+              passLatLng={storeSelectedLatLng}
+            />
+            <Grid item sm={2} xs={7}>
               <Button type="submit" variant="contained">
                 Submit
               </Button>
