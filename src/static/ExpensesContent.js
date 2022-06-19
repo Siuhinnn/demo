@@ -64,7 +64,7 @@ export function ContentProvider(props) {
         return (a.date - b.date) * (sortOrder === "asc" ? 1 : -1);
       });
       setExpenses(sort);
-    } else if (sortField) {
+    } else {
       const sort = [...expenses].sort((a, b) => {
         return (
           a[sortField].toString().localeCompare(b[sortField].toString(), "en", {

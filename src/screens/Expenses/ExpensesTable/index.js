@@ -1,21 +1,26 @@
-import { useContext, useState } from "react";
+// import { useContext } from "react";
+import { useState } from "react";
 import { Card, Typography } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 
-import ExpensesContent from "static/ExpensesContent";
+import { deleteExpense, editExpense, sortExpenses } from "redux/expensesSlice";
+// import ExpensesContent from "static/ExpensesContent";
 
 import Editing from "./Editing";
 import NonEditing from "./NonEditing";
 import { ExpensesContainer } from "../style";
 
 export default function ExpensesTable() {
-  const ctx = useContext(ExpensesContent);
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.expenses);
+  // const ctx = useContext(ExpensesContent);
   const [editId, setEditId] = useState(null);
-  const [sortField, setSortField] = useState("");
+  const [field, setField] = useState("");
   const [order, setOrder] = useState("asc");
 
   function deleteHandler(e) {
-    ctx.onDelete(e.target.name);
-    console.log(ctx.expenses);
+    // ctx.onDelete(e.target.name);
+    dispatch(deleteExpense(e.target.name));
   }
   function editHandler(e) {
     setEditId(e.target.name);
@@ -25,24 +30,33 @@ export default function ExpensesTable() {
     setEditId(null);
   }
 
+  function sortHandler(e) {
+    const sortOrder =
+      e.currentTarget.id === field && order === "asc" ? "desc" : "asc";
+    const sortField = e.currentTarget.id;
+    setField(e.currentTarget.id);
+    setOrder(sortOrder);
+    dispatch(sortExpenses({ sortField, sortOrder }));
+    // ctx.onSort(sortField, sortOrder);
+  }
+
   function editFormSubmitHandler(e) {
     e.preventDefault();
     const data = {
       id: editId,
       title: e.target.title.value,
-      amount: e.target.amount.value,
+      amount: +e.target.amount.value,
       date: new Date(e.target.date.value),
     };
-    ctx.onEdit(editId, data);
+    dispatch(editExpense({ editId, data }));
+    // const data = {
+    //   id: editId,
+    //   title: e.target.title.value,
+    //   amount: e.target.amount.value,
+    //   date: new Date(e.target.date.value),
+    // };
+    // ctx.onEdit(editId, data);
     setEditId(null);
-  }
-
-  function sortHandler(e) {
-    const sortOrder =
-      e.currentTarget.id === sortField && order === "asc" ? "desc" : "asc";
-    setSortField(e.currentTarget.id);
-    setOrder(sortOrder);
-    ctx.onSort(e.currentTarget.id, sortOrder);
   }
 
   return (
@@ -61,7 +75,7 @@ export default function ExpensesTable() {
                 <Typography variant="h2">Amount</Typography>
               </th>
             </tr>
-            {ctx.expenses.map((expense, index) => {
+            {data.map((expense, index) => {
               const date = (
                 <Card variant="outlined" className="dateCard">
                   {expense.date.toLocaleString("en-US", { month: "long" })}

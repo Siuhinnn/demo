@@ -1,13 +1,16 @@
-import { useContext } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { TextField, Button, Card, Grid } from "@mui/material";
+import { useDispatch } from "react-redux";
+// import { useContext } from "react";
 
-import ExpensesContent from "static/ExpensesContent";
+// import ExpensesContent from "static/ExpensesContent";
+import { addExpense } from "redux/expensesSlice";
 
 import { ExpensesContainer } from "./style";
 
 export default function AddExpensesForm() {
-  const ctx = useContext(ExpensesContent);
+  // const ctx = useContext(ExpensesContent);
+  const dispatch = useDispatch();
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       title: "",
@@ -18,12 +21,20 @@ export default function AddExpensesForm() {
 
   const onSubmit = (data) => {
     const { title, amount, date } = data;
-    ctx.onInputSubmit({
-      id: Math.random().toString(),
-      title: title,
-      amount: +amount,
-      date: new Date(date),
-    });
+    dispatch(
+      addExpense({
+        id: Math.random().toString(),
+        title: title,
+        amount: +amount,
+        date: new Date(date),
+      })
+    );
+    // ctx.onInputSubmit({
+    //   id: Math.random().toString(),
+    //   title: title,
+    //   amount: +amount,
+    //   date: new Date(date),
+    // });
     reset();
   };
 
