@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import NavBar from "components/NavBar";
+import SidebarMenu from "components/SidebarMenu";
 import Home from "screens/Home";
 import ExpensesTrackerPage from "pages/expenses-tracker";
 import ExpensesSummaryPage from "pages/expenses-summary";
@@ -12,6 +13,7 @@ export default function Layout() {
   return (
     <LayoutContainer>
       <NavBar />
+      <SidebarMenu />
       <div className="PageContainer">
         <Routes>
           <Route path="/" element={<Home />} />
