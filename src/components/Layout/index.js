@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
-import NavBar from "components/NavBar";
-import SidebarMenu from "components/SidebarMenu";
+import SidebarMenu from "components/Navigator/SidebarMenu";
+import Header from "components/Navigator/Header";
 import Home from "screens/Home";
 import ExpensesTrackerPage from "pages/expenses-tracker";
 import ExpensesSummaryPage from "pages/expenses-summary";
@@ -12,7 +12,7 @@ import { LayoutContainer } from "./style";
 export default function Layout() {
   return (
     <LayoutContainer>
-      <NavBar />
+      <Header />
       <SidebarMenu />
       <div className="PageContainer">
         <Routes>
